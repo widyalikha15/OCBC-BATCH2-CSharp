@@ -10,7 +10,7 @@ public class Logika4
 
         if (Nilai >= 85)
         {
-            Console.WriteLine("Kamu mendapatkan grade A");
+            Console.WriteLine("Kamu mendapat grade A");
         }
         else if (Nilai >= 65)
         {
@@ -20,10 +20,13 @@ public class Logika4
         {
             Console.WriteLine("Kamu mendapat grade C");
         }
-        else if (Nilai <= 25)
+        else if (Nilai >= 25)
         {
             Console.WriteLine("Kamu mendapat grade D");
         }
-        //seharusnya <45
+        else
+        {
+            Console.WriteLine("Kamu mendapat grade E");
+        }
     }
 }
