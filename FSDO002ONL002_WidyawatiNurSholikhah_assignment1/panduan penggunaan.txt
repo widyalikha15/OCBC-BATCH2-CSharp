@@ -5,4 +5,4 @@ cara aplikasi
 4. selanjutnya apabila ingin mencoba lagi ketik y dan apabila ingin keluar maka ketik n
 
 link github
-https://github.com/widyalikha15/OCBC-BATCH2-CSharp/tree/main/FSDO002ONL002_Widyawati Nur Sholikhah_assignment1
+https://github.com/widyalikha15/OCBC-BATCH2-CSharp/tree/main/FSDO002ONL002_WidyawatiNurSholikhah_assignment1
