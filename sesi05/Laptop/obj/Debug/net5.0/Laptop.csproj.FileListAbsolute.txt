@@ -1,0 +1,16 @@
+G:\ocbc nisp\c#\sesi05\Laptop\obj\Debug\net5.0\Laptop.csproj.AssemblyReference.cache
+G:\ocbc nisp\c#\sesi05\Laptop\obj\Debug\net5.0\Laptop.GeneratedMSBuildEditorConfig.editorconfig
+G:\ocbc nisp\c#\sesi05\Laptop\obj\Debug\net5.0\Laptop.AssemblyInfoInputs.cache
+G:\ocbc nisp\c#\sesi05\Laptop\obj\Debug\net5.0\Laptop.AssemblyInfo.cs
+G:\ocbc nisp\c#\sesi05\Laptop\obj\Debug\net5.0\Laptop.csproj.CoreCompileInputs.cache
+G:\ocbc nisp\c#\sesi05\Laptop\bin\Debug\net5.0\Laptop.exe
+G:\ocbc nisp\c#\sesi05\Laptop\bin\Debug\net5.0\Laptop.deps.json
+G:\ocbc nisp\c#\sesi05\Laptop\bin\Debug\net5.0\Laptop.runtimeconfig.json
+G:\ocbc nisp\c#\sesi05\Laptop\bin\Debug\net5.0\Laptop.runtimeconfig.dev.json
+G:\ocbc nisp\c#\sesi05\Laptop\bin\Debug\net5.0\Laptop.dll
+G:\ocbc nisp\c#\sesi05\Laptop\bin\Debug\net5.0\ref\Laptop.dll
+G:\ocbc nisp\c#\sesi05\Laptop\bin\Debug\net5.0\Laptop.pdb
+G:\ocbc nisp\c#\sesi05\Laptop\obj\Debug\net5.0\Laptop.dll
+G:\ocbc nisp\c#\sesi05\Laptop\obj\Debug\net5.0\ref\Laptop.dll
+G:\ocbc nisp\c#\sesi05\Laptop\obj\Debug\net5.0\Laptop.pdb
+G:\ocbc nisp\c#\sesi05\Laptop\obj\Debug\net5.0\Laptop.genruntimeconfig.cache

@@ -1,0 +1,16 @@
+G:\ocbc nisp\c#\sesi05\Pesawat\obj\Debug\net5.0\Pesawat.csproj.AssemblyReference.cache
+G:\ocbc nisp\c#\sesi05\Pesawat\obj\Debug\net5.0\Pesawat.GeneratedMSBuildEditorConfig.editorconfig
+G:\ocbc nisp\c#\sesi05\Pesawat\obj\Debug\net5.0\Pesawat.AssemblyInfoInputs.cache
+G:\ocbc nisp\c#\sesi05\Pesawat\obj\Debug\net5.0\Pesawat.AssemblyInfo.cs
+G:\ocbc nisp\c#\sesi05\Pesawat\obj\Debug\net5.0\Pesawat.csproj.CoreCompileInputs.cache
+G:\ocbc nisp\c#\sesi05\Pesawat\bin\Debug\net5.0\Pesawat.exe
+G:\ocbc nisp\c#\sesi05\Pesawat\bin\Debug\net5.0\Pesawat.deps.json
+G:\ocbc nisp\c#\sesi05\Pesawat\bin\Debug\net5.0\Pesawat.runtimeconfig.json
+G:\ocbc nisp\c#\sesi05\Pesawat\bin\Debug\net5.0\Pesawat.runtimeconfig.dev.json
+G:\ocbc nisp\c#\sesi05\Pesawat\bin\Debug\net5.0\Pesawat.dll
+G:\ocbc nisp\c#\sesi05\Pesawat\bin\Debug\net5.0\ref\Pesawat.dll
+G:\ocbc nisp\c#\sesi05\Pesawat\bin\Debug\net5.0\Pesawat.pdb
+G:\ocbc nisp\c#\sesi05\Pesawat\obj\Debug\net5.0\Pesawat.dll
+G:\ocbc nisp\c#\sesi05\Pesawat\obj\Debug\net5.0\ref\Pesawat.dll
+G:\ocbc nisp\c#\sesi05\Pesawat\obj\Debug\net5.0\Pesawat.pdb
+G:\ocbc nisp\c#\sesi05\Pesawat\obj\Debug\net5.0\Pesawat.genruntimeconfig.cache

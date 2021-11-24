@@ -1,0 +1,16 @@
+G:\ocbc nisp\c#\sesi05\Pesawat_tempur\obj\Debug\net5.0\Pesawat_tempur.csproj.AssemblyReference.cache
+G:\ocbc nisp\c#\sesi05\Pesawat_tempur\obj\Debug\net5.0\Pesawat_tempur.GeneratedMSBuildEditorConfig.editorconfig
+G:\ocbc nisp\c#\sesi05\Pesawat_tempur\obj\Debug\net5.0\Pesawat_tempur.AssemblyInfoInputs.cache
+G:\ocbc nisp\c#\sesi05\Pesawat_tempur\obj\Debug\net5.0\Pesawat_tempur.AssemblyInfo.cs
+G:\ocbc nisp\c#\sesi05\Pesawat_tempur\obj\Debug\net5.0\Pesawat_tempur.csproj.CoreCompileInputs.cache
+G:\ocbc nisp\c#\sesi05\Pesawat_tempur\bin\Debug\net5.0\Pesawat_tempur.exe
+G:\ocbc nisp\c#\sesi05\Pesawat_tempur\bin\Debug\net5.0\Pesawat_tempur.deps.json
+G:\ocbc nisp\c#\sesi05\Pesawat_tempur\bin\Debug\net5.0\Pesawat_tempur.runtimeconfig.json
+G:\ocbc nisp\c#\sesi05\Pesawat_tempur\bin\Debug\net5.0\Pesawat_tempur.runtimeconfig.dev.json
+G:\ocbc nisp\c#\sesi05\Pesawat_tempur\bin\Debug\net5.0\Pesawat_tempur.dll
+G:\ocbc nisp\c#\sesi05\Pesawat_tempur\bin\Debug\net5.0\ref\Pesawat_tempur.dll
+G:\ocbc nisp\c#\sesi05\Pesawat_tempur\bin\Debug\net5.0\Pesawat_tempur.pdb
+G:\ocbc nisp\c#\sesi05\Pesawat_tempur\obj\Debug\net5.0\Pesawat_tempur.dll
+G:\ocbc nisp\c#\sesi05\Pesawat_tempur\obj\Debug\net5.0\ref\Pesawat_tempur.dll
+G:\ocbc nisp\c#\sesi05\Pesawat_tempur\obj\Debug\net5.0\Pesawat_tempur.pdb
+G:\ocbc nisp\c#\sesi05\Pesawat_tempur\obj\Debug\net5.0\Pesawat_tempur.genruntimeconfig.cache

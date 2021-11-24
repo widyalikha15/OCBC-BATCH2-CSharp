@@ -1,0 +1,16 @@
+G:\ocbc nisp\c#\sesi05\overloading\obj\Debug\net5.0\overloading.csproj.AssemblyReference.cache
+G:\ocbc nisp\c#\sesi05\overloading\obj\Debug\net5.0\overloading.GeneratedMSBuildEditorConfig.editorconfig
+G:\ocbc nisp\c#\sesi05\overloading\obj\Debug\net5.0\overloading.AssemblyInfoInputs.cache
+G:\ocbc nisp\c#\sesi05\overloading\obj\Debug\net5.0\overloading.AssemblyInfo.cs
+G:\ocbc nisp\c#\sesi05\overloading\obj\Debug\net5.0\overloading.csproj.CoreCompileInputs.cache
+G:\ocbc nisp\c#\sesi05\overloading\bin\Debug\net5.0\overloading.exe
+G:\ocbc nisp\c#\sesi05\overloading\bin\Debug\net5.0\overloading.deps.json
+G:\ocbc nisp\c#\sesi05\overloading\bin\Debug\net5.0\overloading.runtimeconfig.json
+G:\ocbc nisp\c#\sesi05\overloading\bin\Debug\net5.0\overloading.runtimeconfig.dev.json
+G:\ocbc nisp\c#\sesi05\overloading\bin\Debug\net5.0\overloading.dll
+G:\ocbc nisp\c#\sesi05\overloading\bin\Debug\net5.0\ref\overloading.dll
+G:\ocbc nisp\c#\sesi05\overloading\bin\Debug\net5.0\overloading.pdb
+G:\ocbc nisp\c#\sesi05\overloading\obj\Debug\net5.0\overloading.dll
+G:\ocbc nisp\c#\sesi05\overloading\obj\Debug\net5.0\ref\overloading.dll
+G:\ocbc nisp\c#\sesi05\overloading\obj\Debug\net5.0\overloading.pdb
+G:\ocbc nisp\c#\sesi05\overloading\obj\Debug\net5.0\overloading.genruntimeconfig.cache

@@ -1,0 +1,16 @@
+G:\ocbc nisp\c#\sesi05\override\bin\Debug\net5.0\override.exe
+G:\ocbc nisp\c#\sesi05\override\bin\Debug\net5.0\override.deps.json
+G:\ocbc nisp\c#\sesi05\override\bin\Debug\net5.0\override.runtimeconfig.json
+G:\ocbc nisp\c#\sesi05\override\bin\Debug\net5.0\override.runtimeconfig.dev.json
+G:\ocbc nisp\c#\sesi05\override\bin\Debug\net5.0\override.dll
+G:\ocbc nisp\c#\sesi05\override\bin\Debug\net5.0\ref\override.dll
+G:\ocbc nisp\c#\sesi05\override\bin\Debug\net5.0\override.pdb
+G:\ocbc nisp\c#\sesi05\override\obj\Debug\net5.0\override.csproj.AssemblyReference.cache
+G:\ocbc nisp\c#\sesi05\override\obj\Debug\net5.0\override.GeneratedMSBuildEditorConfig.editorconfig
+G:\ocbc nisp\c#\sesi05\override\obj\Debug\net5.0\override.AssemblyInfoInputs.cache
+G:\ocbc nisp\c#\sesi05\override\obj\Debug\net5.0\override.AssemblyInfo.cs
+G:\ocbc nisp\c#\sesi05\override\obj\Debug\net5.0\override.csproj.CoreCompileInputs.cache
+G:\ocbc nisp\c#\sesi05\override\obj\Debug\net5.0\override.dll
+G:\ocbc nisp\c#\sesi05\override\obj\Debug\net5.0\ref\override.dll
+G:\ocbc nisp\c#\sesi05\override\obj\Debug\net5.0\override.pdb
+G:\ocbc nisp\c#\sesi05\override\obj\Debug\net5.0\override.genruntimeconfig.cache
