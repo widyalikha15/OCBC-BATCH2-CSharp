@@ -2,10 +2,8 @@
 @using HelloApi.Areas.HelpPage.Models
 @model HelpPageApiModel
 
-@{
-    var description = Model.ApiDescription;
-    ViewBag.Title = description.HttpMethod.Method + " " + description.RelativePath;
-}
+@{ var description = Model.ApiDescription;
+    ViewBag.Title = description.HttpMethod.Method + " " + description.RelativePath; }
 
 <div id="body">
     <section class="featured">
