@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
 //add this for MessageBox
 using System.Windows.Forms;
-
 // add data function classes
 using System.Data;
 
@@ -29,7 +28,6 @@ namespace LoginSysten
 
         public Config()
         {
-
         }
 
         // function to connect to the database
@@ -39,7 +37,6 @@ namespace LoginSysten
             {
 
                 ConectionString = "SERVER=" + server + ";" + "DATABASE=" + database_name + ";" + "UID=" + user + ";" + "PASSWORD=" + password + ";";
-
                 connection = new MySqlConnection(ConectionString);
             }
             catch (Exception E)
@@ -51,9 +48,7 @@ namespace LoginSysten
         // Function to execute select statements
         public void ExecuteSql(string Sql_command)
         {
-
             nowquiee(Sql_command);
-
         }
 
         // creates connection to MySQL before execution
@@ -66,8 +61,6 @@ namespace LoginSysten
                 MySqlCommand myc = new MySqlCommand(sql_comm, cs);
                 myc.ExecuteNonQuery();
                 cs.Close();
-
-
             }
             catch (Exception err)
             {
@@ -85,21 +78,15 @@ namespace LoginSysten
             try
             {
                 string command = RecordSource.ToUpper();
-
-                //======================if sql contains select==========================================
+                //=if sql contains select==========================================
                 MySqlDataAdapter da2 = new MySqlDataAdapter(RecordSource, connection);
-
                 DataSet tempds = new DataSet();
                 da2.Fill(tempds, ConnectionType);
                 da2.Fill(tempds);
-
-                //======================================================================================
-
-
+                //=================================================================
             }
             catch (Exception err) { MessageBox.Show(err.Message); }
         }
-
         // function to bring selected results based on column name and row index
         public string Results(int ROW, string COLUMN_NAME)
         {
@@ -111,10 +98,8 @@ namespace LoginSysten
             {
                 MessageBox.Show(err.Message);
                 return "";
-
             }
         }
-
         // function to bring selected results based on column index and row index
         public string Results(int ROW, int COLUMN_NAME)
         {
@@ -126,16 +111,13 @@ namespace LoginSysten
             {
                 MessageBox.Show(err.Message);
                 return dt.Rows[ROW][COLUMN_NAME].ToString();
-
             }
         }
-
         // Execute select statement
         public void ExecuteSelect(string Sql_command)
         {
             RecordSource = Sql_command;
             ConnectionType = Table;
-
             dt = new DataTable(ConnectionType);
             try
             {
@@ -150,10 +132,7 @@ namespace LoginSysten
             {
                 MessageBox.Show(err.Message);
             }
-
-
         }
-
         // count Number of rows after selecy
         public int Count()
         {

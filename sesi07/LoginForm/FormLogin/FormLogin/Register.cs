@@ -19,12 +19,10 @@ namespace LoginSysten
             // pass the database you want to connect to
             db.Connect("userdata");
         }
-
         private void button2_Click(object sender, EventArgs e)
         {
             // saves data in the database
             db.Execute("INSERT INTO `user_info` (`id`, `names`, `username`, `password`) VALUES (NULL, '"+textBox3.Text+"', '"+textBox1.Text+"', '"+textBox2.Text+"');");
-
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -37,7 +35,6 @@ namespace LoginSysten
         {
             // start login window
             Form1 login  = new Form1();
-
             login.Show();
         }
     }
