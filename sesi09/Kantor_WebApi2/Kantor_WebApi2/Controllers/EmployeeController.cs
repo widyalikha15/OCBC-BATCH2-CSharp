@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 
 namespace Kantor_WebApi2.Controllers
 {
-
     [Route("api/[controller]")]
     [ApiController]
     public class EmployeeController : ControllerBase
@@ -17,7 +16,6 @@ namespace Kantor_WebApi2.Controllers
         {
             this._context = context;
         }
-
         //Get : api/user
         [HttpGet( Name = "Get Employee")]
         public ActionResult<IEnumerable<EmployeeItem>> GetEmployeeItems()
@@ -26,7 +24,6 @@ namespace Kantor_WebApi2.Controllers
             // retirm new string[]
             return _context.GetAllEmployee();
         }
-
         //Get : api/user/{id}
         [HttpGet("{id}", Name = "Get Where EmployeeItem")]
         public ActionResult<IEnumerable<EmployeeItem>> GetEmployeeitem(string id)

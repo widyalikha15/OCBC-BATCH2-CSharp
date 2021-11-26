@@ -7,7 +7,6 @@ namespace Kantor_WebApi2.Models
 {
     public class EmployeeItem
     {
-      
         //private Models.EmployeeContext context;
         public int id { get; set; }
         public string nama { get; set; }
