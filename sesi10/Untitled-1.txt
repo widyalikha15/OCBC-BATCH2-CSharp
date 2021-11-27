@@ -1,0 +1,302 @@
+cara buat
+---
+dotnet new webapi -n "TodoApp" -lang "C#" -au none
+//dotnet add package Microsoft.EntityFrameworkCore.sqlite
+//dotnet add package Microsoft.EntityFrameworkCore.tools
+
+install
+---
+dotnet tool install --global dotnet-ef
+dotnet add package NuGet.CommandLine.XPlat --version 5.11.0
+dotnet add package Microsoft.EntityFrameworkCore.Tools --version 5.0.11
+dotnet add package Microsoft.EntityFrameworkCore.Sqlite --version 5.0.11
+
+---------------------------------------------------------------
+TodoController.cs
+
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+
+namespace TodoApp.Controllers
+{
+    [Route("api/[controller]")]
+    [ApiController]
+    public class TodoController : ControllerBase
+    {
+        [Route("TestRun")]
+        [HttpGet]
+        public ActionResult TestRun()
+        {
+            return Ok("success");
+        }
+    }
+}
+-----------------------------------------------
+https://localhost:5001/api/todo/testrun
+https://localhost:5001/WeatherForecast
+----------------------------------------------------
+ItemData.cs
+
+namespace TodoApp.Models
+{
+    public class ItemData
+    {
+        public int Id { get; set;}
+        public string Title {get; set;}
+        public string Description{get; set;}
+        public bool Done { get; set;}
+
+    }
+}
+----------------------------------------------------
+ApiDbContext.cs
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using TodoApp.Models;
+
+namespace TodoApp.Data
+{
+    public class ApiDbContext: DbContext
+    {
+        public virtual DbSet<ItemData> Items {get;set;}
+        public ApiDbContext(DbContextOptions<ApiDbContext> options): base(options) {
+
+        }
+    }
+}
+-------------------------------------------------------------------
+appsetting.json
+
+{
+  "ConnectionStrings":{"DefaultConnection": "DataSource=app.db;Cache=Shared"},
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft": "Warning",
+      "Microsoft.Hosting.Lifetime": "Information"
+    }
+  },
+  "AllowedHosts": "*"
+}
+
+--------------------------------------------------------------
+startup.cs add line 29
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
+using Microsoft.OpenApi.Models;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Sqlite;//
+using Microsoft.Extensions.DependencyModel;
+using TodoApp.Data;
+using TodoApp.Controllers;
+//using TodoApp.Models;
+
+services.AddDbContext<ApiDbContext>(options =>
+                options.UseSqlite(
+                    Configuration.GetConnectionString("DefaultConnection")
+                ));
+----------------------------------------------------------------
+appsetting.json
+
+"ConnectionStrings":{
+    "DefaultConnection": "DataSource=app.db;Cache=Shared"}
+
+---------------
+dotnet ef migrations add "Initial Migration"
+dotnet ef database update
+--------------------------------------
+using System;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using TodoApp.Data;
+using TodoApp.Models;
+
+namespace TodoApp.Controllers
+{
+    [Route("api/[controller]")]
+    [ApiController]
+    public class TodoController : ControllerBase
+    {
+        private ApiDbContext context;
+        public TodoController(ApiDbContext context)
+        {
+            this.context = context;
+        }
+        [HttpGet]
+        public async Task<IActionResult> GetItems()
+        {
+            var items = await context.Items.ToListAsync();
+            return Ok(items);
+        }
+        [HttpPost]
+        public async Task<IActionResult> CreateItem(ItemData data)
+        {
+            if (ModelState.IsValid)
+            {
+                await context.Items.AddAsync(data);
+                await context.SaveChangesAsync();
+
+                return CreatedAtAction("GetItem", new {data.Id }, data);
+            }
+            return new JsonResult("Something Went Wrong") { StatusCode = 500 };
+        }
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetItem(int id)
+        {
+            var item = context.Items.FirstOrDefaultAsync(x => x.Id == id);
+            if (item == null) return NotFound();
+            return Ok(item);
+        }
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateItem(int id, ItemData data)
+        {
+            if (id != data.Id) return BadRequest();
+            var existsItem = await context.Items.FirstOrDefaultAsync(x => x.Id == id);
+            if (existsItem == null) return NotFound();
+            existsItem.Title = data.Title;
+            existsItem.Description = data.Description;
+            existsItem.Done = data.Done;
+            await context.SaveChangesAsync();
+            return NoContent();
+        }
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteItem(int id)
+        {
+            var existsItem = await context.Items.FirstOrDefaultAsync(x => x.Id == id);
+            if (existsItem == null) return NotFound();
+            context.Items.Remove(existsItem);
+            await context.SaveChangesAsync();
+            return Ok(existsItem);
+        }
+        [Route("TestRun")]
+        [HttpGet]
+        public ActionResult testRun()
+        {
+            return Ok("success");
+        }
+    }
+}
+----------------------------
+
+================================
+JwtBearer
+
+//harus sesuai dari awal
+dotnet add package Microsoft.AspNetCore.Authentication.JwtBearer --version 5.0.11
+dotnet add package Microsoft.AspNetCore.Identity.EntityFrameworkCore --version 5.0.11
+dotnet add package Microsoft.AspNetCore.Identity.UI --version 5.0.11
+
+
+==============================
+database
+--
+dotnet ef database drop
+
+version
+--
+dotnet restore
+dotnet --version
+
+run dotnet
+---
+dotnet run watch
+
+cek certificate
+---
+dotnet dev-certs https --trust
+
+migrasi
+---
+dotnet ef migrations remove
+dotnet ef migrations add "Initial Migrations"
+dotnet ef migrations add InitialCreate
+dotnet ef migrations add InitialCreate --output-dir Migrations
+dotnet ef migrations add InitialCreate --context BlogContext --output-dir Migrations/SqlServerMigrations
+dotnet ef migrations add InitialCreate --context SqliteBlogContext --output-dir Migrations/SqliteMigrations
+
+dotnet tool update --global dotnet-ef --version 3.1.0
+dotnet tool update --global dotnet-ef --version 5.0.2
+dotnet tool uninstall --global dotnet-ef
+
+-------------------------------------------------------------
+
+My solution was to install the tool dotnet-ef from microsoft
+https://www.nuget.org/packages/dotnet-ef.
+It uses the same commands but no warnings.
+The change is to use dotnet-ef instead of dotnet ef.
+
+And if you already have dotnet-ef installed then use dotnet tool 
+update --global dotnet-ef --version n.n.n (n.n.n your version to update to)
+
+-------------------------------------------------------------
+https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.Tools
+Entity Framework Core Tools for the NuGet Package Manager Console in Visual Studio.
+Enables these commonly used commands:
+Add-Migration
+Drop-Database
+Get-DbContext
+Get-Migration
+Remove-Migration
+Scaffold-DbContext
+Script-Migration
+Update-Database
+
+https://www.nuget.org/packages/NuGet.CommandLine.XPlat/
+NuGet executable wrapper for the dotnet CLI nuget functionality.
+
+https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.Sqlite/
+SQLite database provider for Entity Framework Core.
+
+https://docs.microsoft.com/en-gb/aspnet/core/data/ef-mvc/intro?view=aspnetcore-5.0
+
+https://stackoverflow.com/questions/41011700/how-to-generate-controller-using-dotnetcore-command-line
+-------------------------------------------------------------
+
+Table Items
+-----
+Id Integer
+Title Text
+Description Text
+Done Integer
+
+CREATE TABLE "Items" ( "Id" INTEGER NOT NULL CONSTRAINT "PK_Items" PRIMARY KEY AUTOINCREMENT, "Title" TEXT NULL, "Description" TEXT NULL, "Done" INTEGER NOT NULL )
+
+CREATE TABLE "__EFMigrationsHistory" ( "MigrationId" TEXT NOT NULL CONSTRAINT "PK___EFMigrationsHistory" PRIMARY KEY, "ProductVersion" TEXT NOT NULL )
+
+
+================================================================================
+
+1. buat folder Models,
+2. buat file dengan nama ItemData.cs (dalam folder model ) dan ApiDbContext.cs (dalam folder data)
+3. appsetting.json tambahkan connection String 
+4. setting startup.cs menambahkan services.AddDbContext 
+5. Migrasi database menggunakan initial Migration 
+6. update database menggunakan perintah dotnet ef
+7. melanjutkan koding dari TodoController.cs 
+8. jalankan dotnet run pada terminal 
+9. jika ada error jalankan perintah dotnet run watch ( untuk mengecek jika terjadi error )
+10. pastikan running dan bisa mengakses https://localhost:5001/api/todo ( pastikan data todo dapat ditampilkan berbentuk JSON )
+11. pengecekan dapat dilakukan dengan menggunakan postman 
+12. sesuaikan dengan kondisi nya CRUD 
+-- POST,jika post pilih tab body dengan memilih raw dan tipe konten yaitu JSON 
+-- DELETE,jika post pilih tab body dengan memilih raw dan tipe konten yaitu JSON ( apabila menggunakan parameter maka dalam tautan akan muncul "-" )
+
+
+ -->
