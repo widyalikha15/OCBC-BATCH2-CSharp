@@ -6,7 +6,7 @@ dotnet new webapi -n "TodoApp" -lang "C#" -au none
 
 install
 ---
-dotnet tool install --global dotnet-ef
+dotnet tool install --global dotnet-ef 
 dotnet add package NuGet.CommandLine.XPlat --version 5.11.0
 dotnet add package Microsoft.EntityFrameworkCore.Tools --version 5.0.11
 dotnet add package Microsoft.EntityFrameworkCore.Sqlite --version 5.0.11
@@ -431,6 +431,10 @@ https://localhost:5001/api/authmanagement/register
 {
     "username" : "widya@gmail.com",
     "email" : "widya@gmail.com",
-    "password" : "Password12345"
+    "password" : "Password12345@"
 }
 
+
+dotnet ef migrations add "Adding authentication to our Api"
+
+http:/localhost:5000/swagger/index.html
