@@ -1,0 +1,58 @@
+install
+---
+MySql.Data 
+Renci.SshNet.Asyn
+
+https://www.getsetsolution.com/solved-could-not-load-file-or-assembly
+https://www.c-sharpcorner.com/article/how-to-connect-mysql-with-asp-net-core/
+https://www.youtube.com/watch?v=JGPhybZvdck //desktop
+https://www.youtube.com/watch?v=F7mmzhFXugM //web api
+
+
+MySQL
+--
+yang diinstal
+https://dev.mysql.com/downloads/windows/visualstudio/ //untuk data connection
+https://dev.mysql.com/downloads/connector/net/ //untuk connector	
+
+config
+---
+view > other windows > document outline > ctrl + alt + t
+solution explorer > referense > add referense > browse mysql.data > checklist / add
+solution explorer > windows forms app > manage nuget referense
+
+
+---------------------
+
+string nama = edNama.Text;
+string username = edUsername.Text;
+string password = edPass.Text;
+
+if (nama.Equals("") || username.Equals("") || password.Equals(""))
+{
+    edNama.Focus();
+    MessageBox.Show("Data Kosong !", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+    return;
+}
+
+string message = "Ingin Register Data ?";
+string caption = "Information";
+MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+DialogResult result;
+
+// Displays the MessageBox
+result = MessageBox.Show(message, caption, buttons);
+if (result == DialogResult.Yes)
+{
+    string query = "insert into user_info(names, username, password) values(@names, @username,@password)";
+    db.tambahRegister(query, nama, username, password);
+    MessageBox.Show("Berhasil Register Data...", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+    edNama.Text = "";
+    edUsername.Text = "";
+    edPass.Text = "";
+    this.Close();
+}
+else
+{
+    this.Close(); // close the connection setup form
+}

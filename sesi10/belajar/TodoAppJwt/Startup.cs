@@ -1,27 +1,17 @@
-using System;
 using System.Text;
-using Microsoft.AspNetCore.Authentication.JwtBearer;//
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Sqlite;//
-using Microsoft.Extensions.DependencyModel;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
-using TodoAppJwt.Data;
+using TodoAppJwt.Models;
 using TodoAppJwt.Configuration;
-using TodoAppJwt.Controllers;
-//using TodoAppJwt.Models;
+using TodoAppJwt.Data;
 
 namespace TodoAppJwt
 {
@@ -64,13 +54,10 @@ namespace TodoAppJwt
             services.AddDefaultIdentity<IdentityUser>(options =>
              options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApiDbContext>();
-
-
-
+            
             services.AddDbContext<ApiDbContext>(options =>
-               options.UseSqlite(
-                   Configuration.GetConnectionString("DefaultConnection")
-               ));
+                options.UseSqlite(Configuration.GetConnectionString("DefaultConnection"))
+            );
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "TodoAppJwt", Version = "v1" });
@@ -80,20 +67,21 @@ namespace TodoAppJwt
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "TodoAppWithJwt v1"));
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "TodoAppJwt v1"));
             }
+
+            app.UseAuthentication();
 
             app.UseHttpsRedirection();
 
             app.UseRouting();
 
-            app.UseAuthorization();
             app.UseAuthentication();
+            app.UseAuthorization(); // Add it here
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

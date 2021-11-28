@@ -8,8 +8,8 @@ using TodoAppJwt.Data;
 namespace TodoAppJwt.Migrations
 {
     [DbContext(typeof(ApiDbContext))]
-    [Migration("20211127095229_Adding authentication to our Api")]
-    partial class AddingauthenticationtoourApi
+    [Migration("20211128161837_Initial Migrations")]
+    partial class InitialMigrations
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
