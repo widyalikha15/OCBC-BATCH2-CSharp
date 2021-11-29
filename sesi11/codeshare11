@@ -1,0 +1,69 @@
+buat project baru
+dotnet new webapi -n "TodoAppRefreshToken" -lang "C#" -au none
+
+install
+---
+dotnet tool install --global dotnet-ef 
+dotnet add package NuGet.CommandLine.XPlat --version 5.11.0
+dotnet add package Microsoft.EntityFrameworkCore.Tools --version 5.0.11
+dotnet add package Microsoft.EntityFrameworkCore.Sqlite --version 5.0.11
+
+
+
+var key = Encoding.ASCII.GetBytes(Configuration["JwtConfig:Secret"]);
+
+var tokenValidationParams = new TokenValodationParameters {
+        ValidateIssuerSigningKey = true,
+        IssuerSigningKey = new SymmetricSecurityKey(key),
+        ValidateIssuer = false,
+        ValidateAudience = false,
+        ValidateLifetime = true,
+        RequireExpirationTime = false,
+        ClockSkew = TimeSpan.Zero
+}
+
+services.AddSingleton(tokenValidationParams);
+
+services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+})
+
+.AddJwtBearer(jwt =>{
+    jwt.SaveToken = true;
+    jwt.TokenValidationParameters = new tokenValidationParams;
+});
+
+
+AuthManagementController.cs
+
+//Expires = DateTime.UtcNow.AddHours(6),
+menjadi
+
+Expires = DateTime.UtcNow.AddSeconds(30),
+
+
+AuthResult.cs
+
+public string Token{ get; set; }
+public string RefreshToken { get; set; }
+public bool Success { get; set; }
+public List<string> Errors {get;set;}
+
+
+Models/DTOs/Requests/TokenRequest
+
+using System.ComponentModel.DataAnnotations;
+
+namespace TodoAppRefreshToken.Models.DTOs.Requests
+{
+    public class TokenRequest
+    {
+        [Required]
+        public string Token {get;set};
+
+    }
+}
+

@@ -436,5 +436,6 @@ https://localhost:5001/api/authmanagement/register
 
 
 dotnet ef migrations add "Adding authentication to our Api"
+dotnet ef database update
 
 http:/localhost:5000/swagger/index.html
