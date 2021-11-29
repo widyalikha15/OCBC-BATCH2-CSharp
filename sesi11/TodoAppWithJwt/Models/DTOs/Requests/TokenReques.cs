@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace TodoAppRefreshToken.Models.DTOs.Requests
+namespace TodoAppWithJwt.Models.DTOs.Requests
 {
     public class TokenRequest
     {

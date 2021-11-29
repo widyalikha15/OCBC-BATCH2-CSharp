@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace TodoAppWithJwt.Models.DTOs.Request
+namespace TodoAppWithJwt.Models.DTOs.Requests
 {
     public class UserRegistrationDto
     {
