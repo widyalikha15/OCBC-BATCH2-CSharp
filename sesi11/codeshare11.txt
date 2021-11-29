@@ -1,0 +1,208 @@
+
+Startup.cs
+
+var key = Encoding.ASCII.GetBytes(Configuration["JwtConfig:Secret"]);
+
+var tokenValidationParams = new TokenValodationParameters {
+        ValidateIssuerSigningKey = true,
+        IssuerSigningKey = new SymmetricSecurityKey(key),
+        ValidateIssuer = false,
+        ValidateAudience = false,
+        ValidateLifetime = true,
+        RequireExpirationTime = false,
+        ClockSkew = TimeSpan.Zero
+}
+
+services.AddSingleton(tokenValidationParams);
+
+services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+})
+
+.AddJwtBearer(jwt =>{
+    jwt.SaveToken = true;
+    jwt.TokenValidationParameters = new tokenValidationParams;
+});
+
+
+----------------
+ClockSkew = TimeSpan.Zero  //sesi 11 add// ClockSkew = TimeSpan.Zero
+--------------------------------------------------------------------------------------
+controller/AuthManagementController.cs
+
+//Expires = DateTime.UtcNow.AddHours(6),
+menjadi
+
+Expires = DateTime.UtcNow.AddSeconds(30),
+---------------------------------------------
+Expires = DateTime.UtcNow.AddMinutes(30),
+--------------------------------------------------------------------------------------------
+AuthResult.cs
+
+public string Token{ get; set; }
+public string RefreshToken { get; set; } //tambah refreash toekn
+public bool Success { get; set; }
+public List<string> Errors {get;set;}
+
+---------------------------------------------------------
+Models/DTOs/Requests/TokenRequest.cs //tambahkan file
+
+using System.ComponentModel.DataAnnotations;
+
+namespace TodoAppRefreshToken.Models.DTOs.Requests
+{
+    public class TokenRequest
+    {
+        [Required]
+        public string Token {get; set;}
+        [Required]
+        public string RefreshToken{get;set;}
+    }
+}
+------------------------------------------------------------------------------------
+G:\ocbc nisp\c#\sesi11\TodoAppWithJwt\Models\DTOs\RefreshToken.cs  //buat file Refresh token
+
+using System;
+using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.AspNetCore.Identity;
+
+namespace TodoAppWithJwt.Models
+{
+    public class RefreshToken
+    {
+        public int Id {get; set;}
+        public string UserId { get; set;}
+        public string Token {get; set;}
+        public string JwtId {get; set;}
+        public bool IsUsed {get; set;}
+        public bool IsRevorked {get; set;}
+        public DateTime AddedDate {get; set;}
+        public DateTime ExpireDate{get;set;}
+
+        [ForeignKey(nameof(UserId))]
+        public IdentityUser User {get;set;}
+    }
+}
+
+------------------------------------------------------------------------------------------
+
+G:\ocbc nisp\c#\sesi11\TodoAppWithJwt\Data\ApiDbContext.cs //update
+
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
+using TodoAppWithJwt.Models;
+
+namespace TodoAppWithJwt.Data
+{
+    public class ApiDbContext : IdentityDbContext
+    {
+        public virtual DbSet<ItemData> Items { get; set; }
+        public virtual DbSet<RefreshToken> RefreshTokens { get; set; } //sesi 11
+
+        public ApiDbContext(DbContextOptions<ApiDbContext> options) : base(options)
+        {
+
+        }
+    }
+}
+
+
+
+Kode peserta	: FSDO002ONL013
+Nama peserta	: Deandri Firdaus
+GitHub link 	: https://github.com/henchhh/OCBC-BATCH2-CSHARP/tree/main/Day%206/Sesi11
+Keterangan 		: Sudah Selesai untuk sesi 11, belajar tentang Token dan RefreshToken
+issues 				: Tidak ada
+Improve code 	: -
+
+Kode peserta	: FSDO002ONL015
+Nama peserta	: Pieter Chrisitan Wenji
+GitHub link 	: https://github.com/pieter17/OCBC-BATCH2-CSharp/tree/main/Sesi11
+Keterangan 		: Sesi 11 sudah beres.
+issues 				: -
+Improve code 	: -
+
+Kode peserta	: FSDO002ONL016
+Nama peserta	: Esra Delima Manurung
+GitHub link 	: https://github.com/esramanurung/OCBC-BATCH2-CSharp/tree/main/Sesi11
+Keterangan 		: Sesi 11 sudah beres tentang refresh token dan dapatinn token nya
+issues 				: -
+Improve code 	: -
+
+Kode peserta : FSDO002ONL012
+Nama peserta : Agung Wicaksono
+Github link  : https://github.com/agung-wic/ocbc-csharp-batch2/tree/master/Sesi11/JWTRefreshToken/TodoAppWithJWT
+Keterangan	 : Sesi 11 sudah selesai
+issue 			 : -
+improve code : -
+
+Kode peserta	: FSDO002ONL001
+Nama peserta	: David Chrissando Frizky
+GitHub link 	: https://github.com/daveFrizky/OCBC-BATCH2-CSHARP/tree/main/Sesi11/TodoAppRefreshToken
+Keterangan	  : Sesi 11 sudah selesai
+issue 				: -
+improve code  : -
+
+Kode peserta	: FSDO002ONL018
+Nama peserta	: Gilang Trisetya Indrawan
+GitHub link 	: https://github.com/ginwa123/GIL-OCBC-BATCH-2-CSHARP/tree/main/Sesi11/TodoAppWithJwtRefreshToken
+Keterangan	  : Sesi 11 sudah selesai
+issue 				: Ketika call api refresh token, seharusnya 
+							  jtw token yang sudah kadaluarsa dapat digenerate kembali, tetapi malah disuruh untuk login kembali padahal kita punya refreshToken dan jwt yang kadaluarsa.
+improve code  : fungsi VerifyAndGenerateToken(TokenRequest tokenRequest)
+								tokenValidationParams.ValidateLifetime = false;
+                var tokenInverification = jwtTokenHandler.ValidateToken(tokenRequest.Token, tokenValidationParams, out var validatedToken);
+                tokenValidationParams.ValidateLifetime = true;
+
+Kode peserta: FSDO002ONL004
+Nama peserta: Giovanni Christian Antonio
+GitHub link : https://github.com/gca98/OCBC-Batch2-CSharp/tree/main/Sesi11
+Keterangan   : Sudah selesai untuk sesi 11
+issue        : -
+imporve code : -
+
+
+
+
+services.AddSwaggerGen(c =>
+{
+    c.SwaggerDoc("v1", new OpenApiInfo { 
+        Title = "MovieApp", 
+        Version = "v1",
+        Description = "Authentication and Authorization in ASP.NET 5 with JWT and Swagger"
+    });
+
+    // To Enable authorization using Swagger (JWT)
+    c.AddSecurityDefinition("Bearer",new OpenApiSecurityScheme()
+    {
+        Name = "Authorization",
+        Type = SecuritySchemeType.ApiKey,
+        Scheme = "Bearer",
+        BearerFormat = "JWT",
+        In = ParameterLocation.Header,
+        Description = "Enter 'Bearer' [space] and then your valid token in the text input below.\r\n\r\nExample: \"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9\""
+    });
+
+    c.AddSecurityRequirement(new OpenApiSecurityRequirement {
+        {
+            new OpenApiSecurityScheme {
+                Reference = new OpenApiReference {
+                                Type = ReferenceType.SecurityScheme,
+                                Id = "Bearer"
+                            }
+            },
+            new string[] { }
+        }
+    });
+});
+
+
+
+services.AddDbContext<ApiDbContext>(options =>
+                options.UseSqlite(Configuration.GetConnectionString("DefaultConnection"))
+            );
+
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9

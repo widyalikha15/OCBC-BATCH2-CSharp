@@ -1,0 +1,171 @@
+buka vs comunity
+
+asp.net core web api
+
+project baru
+UnitTest_Mock
+
+----------------------------------buat
+Models/Employee.cs
+
+Using Sysrem;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Ling;
+using System.Thrading.Tasks;
+
+namespace UnitTest_Mock.Models
+{
+    public class Employee
+    {
+        [Key]
+        public int Id {get;set;}
+        public string Name {get; set;}
+        public string Designation{get;set}
+    }
+}
+
+----------------------------------buat
+Models/ApiDbContext.cs
+
+{
+  "ConnectionStrings":{
+    "myconn": "server=localhost:1443; database=UnitTest;Trusted_Connection=True"
+  },
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft": "Warning",
+      "Microsoft.Hosting.Lifetime": "Information"
+    }
+  },
+  "AllowedHosts": "*"
+}
+
+---------------------------------- 
+ appsettings.json
+
+{
+  "ConnectionStrings":{
+    "myconn": "server=localhost:1443; database=UnitTest;Trusted_Connection=True"
+  },
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft": "Warning",
+      "Microsoft.Hosting.Lifetime": "Information"
+    }
+  },
+  "AllowedHosts": "*"
+}
+
+
+--------------------------------------
+startup.cs
+
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.Mvc;
+using Microsoft.EntityFramework;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
+using Microsoft.OpenApi.Models;
+using System;
+using System.Collections.Generic;
+using system.Ling;
+using System.Threading.Tasks;
+using UnitTest_Model;
+using UnitTest_Mock.Services;
+
+namespace UnitTest_Mock{
+    public class Startup
+    {
+        public Startup(IConfiguration configuration)
+        {
+            Configuration = configuration;
+        }
+
+        public IConfiguration Configuration {get;}
+
+        //
+        public void ConfigureServices(IServicesCollection services)
+        {
+            services.AddControllers();
+            services.AddSwaggerGet(c=>
+            {
+                c.SwaggerDoc("v1, new OpenApiInfo{Title = "UnitTest_Mock, Version = "v1"});
+            });
+
+            #region Connection string
+            services.AddDbContext<>(item=> item.UseSqlServer(Configuration.GetConnectionString("myconn")));
+            #endregion
+            services.AddScoped<IEmployeeService, EmployeeService>();
+        }
+
+        //
+        public void Configure(IApplicationBuilder app, IWebHostEnfirontment env)
+        {
+            if (env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+                app.UseSwagger();
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "UnitTest_Mock v1"));
+            }
+
+            app.UseHttpsRedirection();
+            app.UseRouting();
+            app.UseAuthorization();
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
+            });
+        }
+    }
+}
+
+
+-------------------------------------migrasi database
+dotnet ef migrations add "initial"
+
+dotnet ef database update
+
+
+--------------------------------------buat folder
+Services
+
+Services/EmployeeService.cs
+
+using System;
+using System.Collections.Generic;
+using System.Ling;
+using System.Threading.Tasks;
+using UnitTest_Mock.Models;
+using Microsoft.EntityFrameworkCore;
+
+namespace UnitTest_Mock.Services
+{
+    public class EmployeeService : IEmployeeService
+    {
+        #region Property
+        private randomly AppDbContext _appDbContext;
+        #endregion
+
+        #region Constructor
+        public EmployeeService(AppDbContext appDbContext)
+        {
+            _appDbContext = appDbContext;
+        }
+        #endregion
+
+        public async Task<string> GetEmployyebyId(int EmpID)
+        {
+            var name = await _appDbContext.Employees.Where(c.Id == EmpID).Select
+        }
+    }
+}
+
+
+Services/IEmployeeService.cs

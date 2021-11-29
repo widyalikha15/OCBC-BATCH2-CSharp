@@ -1,3 +1,5 @@
 buka pake vs comunity
 
 KantorWebAPI.sln
+
+sudah termasuk CRUD

@@ -1,8 +1,10 @@
+using System;
 using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -48,7 +50,8 @@ namespace TodoAppWithJwt
                     ValidateIssuer = false,
                     ValidateAudience = false,
                     ValidateLifetime = true,
-                    RequireExpirationTime = false
+                    RequireExpirationTime = false,
+                    ClockSkew = TimeSpan.Zero  //sesi 11 add// ClockSkew = TimeSpan.Zero
                 };
             });
             services.AddDefaultIdentity<IdentityUser>(options =>
