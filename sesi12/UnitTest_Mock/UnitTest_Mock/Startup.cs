@@ -37,9 +37,12 @@ namespace UnitTest_Mock
             });
 
             #region Connection String
-            services.AddDbContext<AppDbContext>(item => item.UseSqlite(Configuration.GetConnectionString("myconn")));
+            services.AddDbContext<AppDbContext>(item => item.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
             #endregion
-
+            /* services.AddDbContext<ApiDbContext>(options =>
+                options.UseSqlite(
+                    Configuration.GetConnectionString("DefaultConnection")    
+                )); */
             services.AddScoped<IEmployeeService, EmployeeService>();
         }
 
