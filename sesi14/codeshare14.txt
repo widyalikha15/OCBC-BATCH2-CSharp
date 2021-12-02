@@ -1,0 +1,85 @@
+=======================================================Dockerfile
+FROM mcr.microsoft.com/dotnet/aspnet:5.0 AS base
+WORKDIR /app
+EXPOSE 80
+EXPOSE 443
+EXPOSE 48719
+EXPOSE 27017
+EXPOSE 5000
+EXPOSE 5001
+
+
+FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
+WORKDIR /src
+COPY . .
+
+#COPY ["CoreWebApi/CoreWebApi.csproj", "CoreWebApi/"]
+#RUN dotnet restore "CoreWebApi/CoreWebApi.csproj"
+#COPY . .
+#WORKDIR "/src/CoreWebApi"
+#RUN dotnet build "CoreWebApi.csproj" -c Release -o /app/build
+
+RUN dotnet restore 
+RUN dotnet build --no-restore -c Release -o /app
+
+FROM build AS publish
+RUN dotnet publish "CoreWebApi.csproj" -c Release -o /app/publish
+
+FROM base AS final
+WORKDIR /app
+#COPY --from=publish /app/publish .
+COPY --from=publish /app/ .
+#ENTRYPOINT ["dotnet", "CoreWebApi.dll"]
+CMD ASPNETCORE_URLS=http://*:$PORT dotnet CoreWebApi.dll
+
+=========================================================================
+
+git init
+git add README.md
+git commit -m "first commit"
+git remote add origin https://github.com/Leonuch/flex.git
+git checkout -b main
+git pull origin main --allow-unrelated-histories
+git push -u origin main
+
+
+
+startup.cs
+
+string mySqlConnectionStr = Configuration.GetConnectionString("DefaultConnection");
+            services.AddDbContextPool<ApiDbContext>(options => options.UseMySQL(mySqlConnectionStr));
+
+
+appsettingjson
+
+
+"ConnectionStrings": {
+    "DefaultConnection": "server=sql6.freesqldatabase.com;port=3306;database=sql6455466;user=sql6455466;pwd=cUn25Uxtuz"
+  },
+
+
+ConnectionStrings": {
+    "DefaultConnection": "server=www.db4free.net;port=3306;database=widyalikha15data;user=widyalikha15;pwd=widyalikha15"
+  },
+
+ConnectionStrings": {
+    "DefaultConnection": "server=sql6.freesqldatabase.com;port=3306;database=sql6455499;user=sql6455499;pwd=hTZaZPVfIB"
+  },
+
+
+=====================
+git init
+git add *
+git commit -a -m 'Initial commit'
+git remote add origin https://github.com/widyalikha15/paymentappfinal.git
+
+git add .
+git commit -m "update"
+git remote add url https://github.com/widyalikha15/paymentappfinal.git
+git checkout -b main
+$ :wq
+git push -u url main
+
+
+
+https://buildpack-registry.s3.amazonaws.com/buildpacks/jincod/dotnetcore.tgz

@@ -1,0 +1,133 @@
+javascript basic
+
+#menampilkan pada console
+console.log("hello JavaScript")
+
+#menampilkan pada alert
+alert("hello JavaScript")
+
+
+#mencetak pada terminal javascript
+console.log(42); //number
+console.log("blubber"); //string
+console.log(true); //boolean
+console.log(undefined); //undefined
+
+
+#variabel dan tipe data
+#Declaration
+var bucked;
+var inputNumber;
+
+#Assignments
+bucket = 'hello'
+inputNumber = 10
+
+#Declaration + Assignment
+var bucket = 'hello;
+var inputNumber = 10
+
+#Declaration + Assignment
+var myNumber ; // undefined
+myNumber = 2; // Number (2)
+
+#Re-assignment
+myNumber = myNumber + 1;
+
+#Variabel & Tipe Data
+No duplicate Declaration!
+var myNumber;
+var myNumber = 2;
+
+Penulisan di JavaScriptif Kondisional
+IF - ELSE IF - ELSE
+
+if(kondisi){
+statement..
+}
+
+if(kondisi){
+statement..
+}else{
+statement..
+}
+
+if(kondisi){
+statement..
+} else if (  kondisi2 ) {
+statement..
+}else{
+statement..
+}
+
+Kondisional Jika kondisi saya lapar maka saya akan makan
+
+var kondisi =‘lapar’
+if (  kondisi === ‘lapar’ ){
+console.log(‘makan’)
+} 
+
+Kondisional Jika kondisi saya lapar maka saya akan makan, jika tidak maka saya akan minum
+
+var kondisi =‘lapar’
+if (  kondisi === ‘lapar’ ){   
+console.log(‘makan’)
+} else {   
+console.log(‘minum’)
+}
+
+Kondisional Jika kondisi saya lapar maka saya akan makan, jika kondisi saya haus maka saya akan minum, jika tidak keduanya maka saya akan tidur saja
+var kondisi =‘lapar’
+if (  kondisi === ‘lapar’ ){   
+console.log(‘makan’)
+} else if  (  kondisi === ‘haus’ ){   
+console.log(‘minum’)
+}else {  
+console.log(‘tidur’)
+}
+
+Operasi Logika 
+console.log( true && true) =>  true
+console.log( true && false) => false
+console.log( false && true) => false
+console.log( false && false) => false
+
+Mengecek apakah sebuah nilai ada di dalam range
+var input =15
+console.log( input >10&& input <20) =>  true
+console.log( input >10&& input >20) => false
+
+
+Penulisan Iterasi
+while(i <= 100){
+//ekspresi (aksi)
+}
+
+for(var i = 1; i <= 100; i++) {
+//ekspresi (aksi)
+}
+
+ITERASI WHILE
+i = 0
+while (i<=100){
+//ekspresi (aksi)
+i++
+}
+
+ITERASI FOR
+for (var i = 1; i <= 100; i++){
+//ekspresi (aksi)
+}
+
+
+Akses item dalam Array
+var iniArray = ["Kucing", 345, "Kuda", 123, true]
+// akses item "Kucing"
+iniArray[0]
+// akses item 345
+iniArray[1]
+// akses item true
+iniArray[4]
+
+
+

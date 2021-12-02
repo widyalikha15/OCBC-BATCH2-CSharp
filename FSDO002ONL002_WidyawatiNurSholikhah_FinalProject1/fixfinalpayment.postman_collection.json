@@ -1,0 +1,315 @@
+{
+	"info": {
+		"_postman_id": "a3eef490-61d2-4aee-9243-609c329fb49d",
+		"name": "fixfinalpayment",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "register",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"username\": \"Ahmad\",\r\n  \"email\": \"Ahmad@example.com\",\r\n  \"password\": \"Ahmad12@\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://paymentappwidya.herokuapp.com/api/AuthManagement/Register",
+					"protocol": "https",
+					"host": [
+						"paymentappwidya",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"AuthManagement",
+						"Register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJZCI6IjdjYjk1MWMyLWIyNGEtNDRhNS1iMjJjLWFiODY2NDRmOGJkZSIsImVtYWlsIjoiQWhtYWRAZXhhbXBsZS5jb20iLCJzdWIiOiJBaG1hZEBleGFtcGxlLmNvbSIsImp0aSI6IjE3MDg4ZDE1LWIwNTAtNGU0Ni1iNTMyLWQ2ZTYzZjExYzUxNiIsIm5iZiI6MTYzODM0NTM1MiwiZXhwIjoxNjM4MzQ1NDAyLCJpYXQiOjE2MzgzNDUzNTJ9.IHdF2CzTpfY-P5V6_S9e2tHMg7P_7neiXlxSl14Jmyc",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"Ahmad@example.com\",\r\n  \"password\": \"Ahmad12@\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://paymentappwidya.herokuapp.com/api/AuthManagement/Login",
+					"protocol": "https",
+					"host": [
+						"paymentappwidya",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"AuthManagement",
+						"Login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "RefreshToken",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJZCI6IjdjYjk1MWMyLWIyNGEtNDRhNS1iMjJjLWFiODY2NDRmOGJkZSIsImVtYWlsIjoiQWhtYWRAZXhhbXBsZS5jb20iLCJzdWIiOiJBaG1hZEBleGFtcGxlLmNvbSIsImp0aSI6IjE3MDg4ZDE1LWIwNTAtNGU0Ni1iNTMyLWQ2ZTYzZjExYzUxNiIsIm5iZiI6MTYzODM0NTM1MiwiZXhwIjoxNjM4MzQ1NDAyLCJpYXQiOjE2MzgzNDUzNTJ9.IHdF2CzTpfY-P5V6_S9e2tHMg7P_7neiXlxSl14Jmyc",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJZCI6IjdjYjk1MWMyLWIyNGEtNDRhNS1iMjJjLWFiODY2NDRmOGJkZSIsImVtYWlsIjoiQWhtYWRAZXhhbXBsZS5jb20iLCJzdWIiOiJBaG1hZEBleGFtcGxlLmNvbSIsImp0aSI6ImY3NTlmYzk2LTg0MWMtNGUzNC05NzE4LWQyMDk2YTk2ZWU0NSIsIm5iZiI6MTYzODM0NTcxMiwiZXhwIjoxNjM4MzQ1NzYyLCJpYXQiOjE2MzgzNDU3MTJ9.0a_g3ls7R7rRba_r72UEfNWRb_Gvi1PyBFSkm4WWAaA\",\r\n  \"refreshToken\": \"CI84E4X5F3YRDX2VI36XDT1E0I45669XP7K00a0d452-7d1c-4a60-916a-c5f05d55dcae\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://paymentappwidya.herokuapp.com/api/AuthManagement/RefreshToken",
+					"protocol": "https",
+					"host": [
+						"paymentappwidya",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"AuthManagement",
+						"RefreshToken"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post payment",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJZCI6IjdjYjk1MWMyLWIyNGEtNDRhNS1iMjJjLWFiODY2NDRmOGJkZSIsImVtYWlsIjoiQWhtYWRAZXhhbXBsZS5jb20iLCJzdWIiOiJBaG1hZEBleGFtcGxlLmNvbSIsImp0aSI6Ijg2YzZjYWUyLWRiNjctNDcyMS1iYzAyLTEzOWFhYTA3OTBhOSIsIm5iZiI6MTYzODM2NDcwNCwiZXhwIjoxNjM4MzY1MzA0LCJpYXQiOjE2MzgzNjQ3MDR9.M7IqBefCNpHLH7zOD4nu3elj34pwMpBiKZ9svNBuHo8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"cardOwnerName\": \"hasanah\",\r\n  \"cardNumber\": \"123454467\",\r\n  \"expirationDate\": \"15-12-2022\",\r\n  \"securityCode\": \"1472428\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://paymentappwidya.herokuapp.com/api/Payment/",
+					"protocol": "https",
+					"host": [
+						"paymentappwidya",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"Payment",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getpayment",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJZCI6IjdjYjk1MWMyLWIyNGEtNDRhNS1iMjJjLWFiODY2NDRmOGJkZSIsImVtYWlsIjoiQWhtYWRAZXhhbXBsZS5jb20iLCJzdWIiOiJBaG1hZEBleGFtcGxlLmNvbSIsImp0aSI6Ijg2YzZjYWUyLWRiNjctNDcyMS1iYzAyLTEzOWFhYTA3OTBhOSIsIm5iZiI6MTYzODM2NDcwNCwiZXhwIjoxNjM4MzY1MzA0LCJpYXQiOjE2MzgzNjQ3MDR9.M7IqBefCNpHLH7zOD4nu3elj34pwMpBiKZ9svNBuHo8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://paymentappwidya.herokuapp.com/api/Payment/",
+					"protocol": "https",
+					"host": [
+						"paymentappwidya",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"Payment",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update payment",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJZCI6IjdjYjk1MWMyLWIyNGEtNDRhNS1iMjJjLWFiODY2NDRmOGJkZSIsImVtYWlsIjoiQWhtYWRAZXhhbXBsZS5jb20iLCJzdWIiOiJBaG1hZEBleGFtcGxlLmNvbSIsImp0aSI6ImFlZWRmZDBiLTY0MmYtNDFkMS05NDgzLWI3OGI4MjNmMzRjOSIsIm5iZiI6MTYzODM2NDAyNCwiZXhwIjoxNjM4MzY0MDc0LCJpYXQiOjE2MzgzNjQwMjR9.17svaOCwVTkA9D6Rn0Xl7Pk4-zU_3DwriXc2C-5utnc",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 3,\r\n    \"cardOwnerName\": \"nur-new\",\r\n    \"cardNumber\": \"112233\",\r\n    \"expirationDate\": \"15-12-2021\",\r\n    \"securityCode\": \"1234\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://paymentappwidya.herokuapp.com/api/Payment/3",
+					"protocol": "https",
+					"host": [
+						"paymentappwidya",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"Payment",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete payment",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJZCI6IjdjYjk1MWMyLWIyNGEtNDRhNS1iMjJjLWFiODY2NDRmOGJkZSIsImVtYWlsIjoiQWhtYWRAZXhhbXBsZS5jb20iLCJzdWIiOiJBaG1hZEBleGFtcGxlLmNvbSIsImp0aSI6ImRmOWEzOTVkLThkMzEtNGMxYi1iNGIxLWM3ZDVhZDRlY2JmNCIsIm5iZiI6MTYzODM2NDEyMSwiZXhwIjoxNjM4MzY0MTcxLCJpYXQiOjE2MzgzNjQxMjF9.yIdU30Cbr5Q6Nf_icmN4yhi_JMOotG2vAqvvDfvlQN8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://paymentappwidya.herokuapp.com/api/Payment/3",
+					"protocol": "https",
+					"host": [
+						"paymentappwidya",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"Payment",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get payment 1",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJZCI6IjdjYjk1MWMyLWIyNGEtNDRhNS1iMjJjLWFiODY2NDRmOGJkZSIsImVtYWlsIjoiQWhtYWRAZXhhbXBsZS5jb20iLCJzdWIiOiJBaG1hZEBleGFtcGxlLmNvbSIsImp0aSI6IjE2YjFlOTY2LWQ0NTgtNGVjYS04ZDUwLTM0NWMyMmI0NjU5NSIsIm5iZiI6MTYzODM2NDE3NiwiZXhwIjoxNjM4MzY0MjI2LCJpYXQiOjE2MzgzNjQxNzZ9.3WgkvRBhLlFEe7m7JdSzWejn0TkaTRM2eBq2GC8M5M4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://paymentappwidya.herokuapp.com/api/Payment/3",
+					"protocol": "https",
+					"host": [
+						"paymentappwidya",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"Payment",
+						"3"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
